@@ -1,0 +1,254 @@
+
+Zad 1
+
+#include <iostream>
+
+using namespace std;
+
+double poleKola(double promien) {
+    const double PI = 3.14159;
+    return PI * promien * promien;
+}
+
+double poleTrojkata(double podstawa, double wysokosc) {
+    return 0.5 * podstawa * wysokosc;
+}
+
+int main() {
+    cout << "Pole kola o promieniu 5: " << poleKola(5) << endl;
+    cout << "Pole trojkata (podstawa 4, wysokosc 5): " << poleTrojkata(4, 5) << endl;
+    
+    return 0;
+}
+
+Zad 2
+
+#include <iostream>
+
+using namespace std;
+
+unsigned long long silnia(int n) {
+    if (n <= 1) return 1;
+    return n * silnia(n - 1);
+}
+
+int main() {
+    cout << "Silnia z 5 wynosi: " << silnia(5) << endl;
+    
+    return 0;
+}
+
+Zad 3
+
+#include <iostream>
+
+using namespace std;
+
+unsigned long long fibonacci(int n) {
+    if (n <= 0) return 0;
+    if (n == 1) return 1;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    cout << "7. wyraz ciagu Fibonacciego to: " << fibonacci(7) << endl;
+    
+    return 0;
+}
+
+
+
+Zad 4
+
+#include <iostream>
+
+using namespace std;
+
+// Srednia dla dwoch elementow
+double srednia(double a, double b) { 
+    return (a + b) / 2.0; 
+}
+
+// Srednia dla trzech elementow
+double srednia(double a, double b, double c) { 
+    return (a + b + c) / 3.0; 
+}
+
+// Srednia dla calej tablicy
+double srednia(double tab[], int rozmiar) {
+    if (rozmiar <= 0) return 0.0;
+    double suma = 0;
+    for (int i = 0; i < rozmiar; i++) {
+        suma += tab[i];
+    }
+    return suma / rozmiar;
+}
+
+// Srednia dla zakresu (od indeksu 'start' do 'koniec')
+double srednia(double tab[], int start, int koniec) {
+    if (start > koniec) return 0.0;
+    double suma = 0;
+    int ilosc = 0;
+    for (int i = start; i <= koniec; i++) {
+        suma += tab[i];
+        ilosc++;
+    }
+    return suma / ilosc;
+}
+
+int main() {
+    cout << "Srednia liczb 4 i 6: " << srednia(4, 6) << endl;
+    cout << "Srednia liczb 2, 4 i 6: " << srednia(2, 4, 6) << endl;
+    
+    double tablica[] = {1.0, 2.0, 3.0, 4.0, 5.0};
+    cout << "Srednia calej tablicy: " << srednia(tablica, 5) << endl;
+    cout << "Srednia elementow o indeksach od 1 do 3: " << srednia(tablica, 1, 3) << endl;
+
+    return 0;
+}
+
+
+
+
+Zad 5
+
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class ProstyStos {
+private:
+    vector<int> elementy;
+
+public:
+    void dodaj(int wartosc) {
+        elementy.push_back(wartosc);
+    }
+
+    void usun() {
+        if (!elementy.empty()) {
+            elementy.pop_back();
+        } else {
+            cout << "Stos jest pusty!\n";
+        }
+    }
+
+    void pokazGore() {
+        if (!elementy.empty()) {
+            cout << "Na gorze stosu: " << elementy.back() << "\n";
+        } else {
+            cout << "Stos jest pusty!\n";
+        }
+    }
+};
+
+int main() {
+    ProstyStos stos;
+    
+    stos.dodaj(10);
+    stos.dodaj(20);
+    stos.pokazGore(); // Wypisze 20
+    
+    stos.usun();
+    stos.pokazGore(); // Wypisze 10
+
+    return 0;
+}
+
+
+
+Zad 6
+
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+class Osoba {
+public:
+    string imie, nazwisko, adres;
+
+    Osoba(string i, string n, string a) : imie(i), nazwisko(n), adres(a) {}
+
+    void wypisz() const {
+        cout << imie << " " << nazwisko << ", " << adres << "\n";
+    }
+};
+
+int main() {
+    // Wektor obiektow string
+    vector<string> napisy = {"Banan", "Jablko", "Czeresnia"};
+    cout << "Wektor stringow:\n";
+    for(const auto& napis : napisy) {
+        cout << "- " << napis << endl;
+    }
+
+    // Wektor obiektow Osoba
+    vector<Osoba> listaOsob;
+    listaOsob.push_back(Osoba("Jan", "Kowalski", "Warszawa"));
+    listaOsob.push_back(Osoba("Anna", "Nowak", "Krakow"));
+
+    cout << "\nWektor Osob:\n";
+    for(const auto& osoba : listaOsob) {
+        osoba.wypisz();
+    }
+
+    return 0;
+}
+
+
+
+
+Zad 7
+
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+class Osoba {
+public:
+    string imie, nazwisko, adres;
+
+    Osoba(string i, string n, string a) : imie(i), nazwisko(n), adres(a) {}
+
+    void wypisz() const {
+        cout << imie << " " << nazwisko << ", " << adres << "\n";
+    }
+};
+
+// Funkcje wyszukujace
+void szukajPoImieniu(const vector<Osoba>& lista, string szukaneImie) {
+    cout << "--- Wyniki dla imienia: " << szukaneImie << " ---\n";
+    for (const auto& osoba : lista) {
+        if (osoba.imie == szukaneImie) osoba.wypisz();
+    }
+}
+
+void szukajPoNazwisku(const vector<Osoba>& lista, string szukaneNazwisko) {
+    cout << "--- Wyniki dla nazwiska: " << szukaneNazwisko << " ---\n";
+    for (const auto& osoba : lista) {
+        if (osoba.nazwisko == szukaneNazwisko) osoba.wypisz();
+    }
+}
+
+int main() {
+    // Tworzymy liste i od razu ja wypelniamy
+    vector<Osoba> listaOsob = {
+        Osoba("Jan", "Kowalski", "Warszawa"),
+        Osoba("Anna", "Nowak", "Krakow"),
+        Osoba("Jan", "Wisniewski", "Poznan")
+    };
+
+    // Testujemy wyszukiwanie
+    szukajPoImieniu(listaOsob, "Jan");
+    szukajPoNazwisku(listaOsob, "Nowak");
+
+    return 0;
+}

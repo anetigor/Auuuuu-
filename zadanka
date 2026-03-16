@@ -64,17 +64,14 @@ Zad 4
 
 using namespace std;
 
-// Srednia dla dwoch elementow
 double srednia(double a, double b) { 
     return (a + b) / 2.0; 
 }
 
-// Srednia dla trzech elementow
 double srednia(double a, double b, double c) { 
     return (a + b + c) / 3.0; 
 }
 
-// Srednia dla calej tablicy
 double srednia(double tab[], int rozmiar) {
     if (rozmiar <= 0) return 0.0;
     double suma = 0;
@@ -84,7 +81,6 @@ double srednia(double tab[], int rozmiar) {
     return suma / rozmiar;
 }
 
-// Srednia dla zakresu (od indeksu 'start' do 'koniec')
 double srednia(double tab[], int start, int koniec) {
     if (start > koniec) return 0.0;
     double suma = 0;
@@ -180,14 +176,12 @@ public:
 };
 
 int main() {
-    // Wektor obiektow string
     vector<string> napisy = {"Banan", "Jablko", "Czeresnia"};
     cout << "Wektor stringow:\n";
     for(const auto& napis : napisy) {
         cout << "- " << napis << endl;
     }
 
-    // Wektor obiektow Osoba
     vector<Osoba> listaOsob;
     listaOsob.push_back(Osoba("Jan", "Kowalski", "Warszawa"));
     listaOsob.push_back(Osoba("Anna", "Nowak", "Krakow"));
@@ -223,7 +217,6 @@ public:
     }
 };
 
-// Funkcje wyszukujace
 void szukajPoImieniu(const vector<Osoba>& lista, string szukaneImie) {
     cout << "--- Wyniki dla imienia: " << szukaneImie << " ---\n";
     for (const auto& osoba : lista) {
@@ -239,14 +232,12 @@ void szukajPoNazwisku(const vector<Osoba>& lista, string szukaneNazwisko) {
 }
 
 int main() {
-    // Tworzymy liste i od razu ja wypelniamy
     vector<Osoba> listaOsob = {
         Osoba("Jan", "Kowalski", "Warszawa"),
         Osoba("Anna", "Nowak", "Krakow"),
         Osoba("Jan", "Wisniewski", "Poznan")
     };
 
-    // Testujemy wyszukiwanie
     szukajPoImieniu(listaOsob, "Jan");
     szukajPoNazwisku(listaOsob, "Nowak");
 
